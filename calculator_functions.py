@@ -2,6 +2,7 @@ import customtkinter as c
 import tkinter as t
 import pyperclip as pc
 from plyer import notification
+import math
 
 # Functions for the calculator
 
@@ -24,7 +25,8 @@ def EvaluateValues(entry_widget: c.CTkEntry):
             title="Invalid Expression",
             message="Enter a valid mathematical expression.",
             timeout=3
-        )           
+        )
+        return           
         
 # ClearValues clears the entry box
 def ClearValues(entry_widget: c.CTkEntry):
@@ -34,24 +36,60 @@ def ClearValues(entry_widget: c.CTkEntry):
 def ExitApp(app: c.CTk):
     app.destroy()
 
-# Square squares the number entered in the entry box
+# Square squares the expression entered in the entry box
 def Square(entry_widget: c.CTkEntry):
     try:
-        number = int(entry_widget.get())
-    except TypeError:
+        expression = str(entry_widget.get())
+        solution = int(eval(expression))
+    except Exception:
         notification.notify(
             title="Invalid Expression",
             message="Enter a valid mathematical expression to square.",
             timeout=3
-        )  
+        )
+        return
 
-    solution = number ** 2
+    squared = int(solution ** 2)
     entry_widget.delete(0, t.END)
-    entry_widget.insert(0, solution)
+    entry_widget.insert(0, squared)
+
+# SquareRoot calculates the square root of the expression in the entry box
+def SquareRoot(entry_widget: c.CTkEntry):
+    try:
+        expression = str(entry_widget.get())
+        solution = int(eval(expression))
+    except Exception:
+        notification.notify(
+            title="Invalid Expression",
+            message="Enter a valid mathematical expression to square root.",
+            timeout=3
+        )
+        return
+
+    sqrt =  math.sqrt(solution)
+    sqrt_real = round(sqrt)
+    entry_widget.delete(0, t.END)
+    entry_widget.insert(0, sqrt_real)
 
 # Copy copies the expression in the entry box
 def Copy(entry_widget: c.CTkEntry):
     pc.copy(str(entry_widget.get()))
+    notification.notify(
+        title="Copy",
+        message="Expression copied to clipboard.",
+        timeout=3
+    )
+
+# Backspace deletes the previous character in the entry
+def Backspace(entry_widget: c.CTkEntry):
+    expression_list = []
+    for i in entry_widget.get():
+        expression_list.append(i)
+
+    start_char = len(expression_list) - 1
+    end_char = len(expression_list)
+    
+    entry_widget.delete(start_char, end_char)
 
 # Paste pastes whatever is in the clipboard into the entry box
 def Paste(entry_widget: c.CTkEntry):

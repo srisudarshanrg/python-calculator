@@ -40,25 +40,31 @@ zero.grid(row=4, column=1, padx=2, pady=3)
 # operators
 plus = c.CTkButton(master=app, text="+", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EnterValues("+", expression_entry))
 subtract = c.CTkButton(master=app, text="-", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EnterValues("-", expression_entry))
-multiply = c.CTkButton(master=app, text="x", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EnterValues("*", expression_entry))
-divide = c.CTkButton(master=app, text="/", font=("Helvetica", 20), height=78, width=112, command=lambda: cf.EnterValues("/", expression_entry))
-equal= c.CTkButton(master=app, text="=", font=("Helvetica", 20), height=147, width=112, command=lambda: cf.EvaluateValues(expression_entry))
+multiply = c.CTkButton(master=app, text="×", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EnterValues("*", expression_entry))
+divide = c.CTkButton(master=app, text="÷", font=("Helvetica", 20), height=78, width=112, command=lambda: cf.EnterValues("/", expression_entry))
+equal= c.CTkButton(master=app, text="=", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EvaluateValues(expression_entry))
+square = c.CTkButton(master=app, text="x²", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.Square(expression_entry))
+sqrt = c.CTkButton(master=app, text="√", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.SquareRoot(expression_entry))
+backspace = c.CTkButton(master=app, text="🔙", font=("Helvetica", 40), height=72, width=112, command=lambda: cf.Backspace(expression_entry))
 
 # position operators
 plus.grid(row=1, column=3, padx=2, pady=3)
 subtract.grid(row=2, column=3, padx=2, pady=3)
 multiply.grid(row=3, column=3, padx=2, pady=3)
 divide.grid(row=4, column=3, padx=2, pady=3)
-equal.grid(row=5, rowspan=2, column=3, padx=2)
+equal.grid(row=5, column=3, padx=2)
+backspace.grid(row=6, column=3, padx=2)
+square.grid(row=5, column=0 ,padx=2)
+sqrt.grid(row=5, column=1, padx=2)
 
 # features
-clear = c.CTkButton(master=app, text="Clear", font=("Helvetica", 20), height=72, width=346, command=lambda: cf.ClearValues(expression_entry))
+clear = c.CTkButton(master=app, text="Clear", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.ClearValues(expression_entry))
 exit_app = c.CTkButton(master=app, text="Exit", font=("Helvetica", 20), height=72, width=346, command=lambda: cf.ExitApp(app))
 copy = c.CTkButton(master=app, text="Copy", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.Copy(expression_entry))
 paste = c.CTkButton(master=app, text="Paste", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.Paste(expression_entry))
 
 # positioning features
-clear.grid(row=5, column=0, columnspan=3, padx=2, pady=3)
+clear.grid(row=5, column=2, padx=2, pady=3)
 exit_app.grid(row=6, column=0, columnspan=3, padx=2, pady=3)
 copy.grid(row=4, column=0, padx=2, pady=3)
 paste.grid(row=4, column=2, padx=2, pady=3)
