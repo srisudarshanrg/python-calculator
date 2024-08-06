@@ -1,5 +1,6 @@
 import customtkinter as c
 import calculator_functions as cf
+import keyboard as key
 
 c.set_appearance_mode("dark")
 c.set_default_color_theme("blue")
@@ -43,6 +44,7 @@ subtract = c.CTkButton(master=app, text="-", font=("Helvetica", 20), height=72, 
 multiply = c.CTkButton(master=app, text="×", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EnterValues("*", expression_entry))
 divide = c.CTkButton(master=app, text="÷", font=("Helvetica", 20), height=78, width=112, command=lambda: cf.EnterValues("/", expression_entry))
 equal= c.CTkButton(master=app, text="=", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.EvaluateValues(expression_entry))
+key.on_press_key('enter', lambda x: cf.EvaluateValues(expression_entry))
 square = c.CTkButton(master=app, text="x²", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.Square(expression_entry))
 sqrt = c.CTkButton(master=app, text="√", font=("Helvetica", 20), height=72, width=112, command=lambda: cf.SquareRoot(expression_entry))
 backspace = c.CTkButton(master=app, text="🔙", font=("Helvetica", 40), height=72, width=112, command=lambda: cf.Backspace(expression_entry))
