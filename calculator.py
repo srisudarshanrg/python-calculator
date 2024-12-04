@@ -6,7 +6,7 @@ c.set_appearance_mode("dark")
 c.set_default_color_theme("blue")
 
 app = c.CTk()
-app.title("Calculator")
+app.title("RaptorCalc")
 app.geometry("475x572")
 
 # Entry for entering values needed for expression
