@@ -1,4 +1,4 @@
-# RaptorCalculator
+# RaptorCalc
 A basic calculator for basic calculations that include:
 - Addition
 - Subtraction
